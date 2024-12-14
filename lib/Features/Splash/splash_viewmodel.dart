@@ -1,0 +1,46 @@
+import 'package:flutter/animation.dart';
+import 'package:get/get.dart';
+import '../../Core/Widgets/animate_switch.dart';
+import 'Repositories/check_connectivity.dart';
+import 'splash_model.dart';
+
+//! SplashViewModel class handles splash logic, including checking internet connection and navigation
+class SplashViewmodel extends GetxController {
+  var connectionStatus = ConnectionStatus.initial.obs; //* Observable for connection status
+  final SplashRepository splashRepository = SplashRepository(); //* Repository to check connectivity
+
+  @override
+  void onInit() {
+    super.onInit();
+    checkConnection(); //! Check the connection status when the controller is initialized
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    checkConnection(); //* Check the connection again before disposing (though this is uncommon)
+  }
+
+
+
+
+
+  //! Method to check internet connection and handle the navigation flow
+  Future<void> checkConnection() async {
+    connectionStatus.value = ConnectionStatus.initial; //* Set initial status
+    Future.delayed(const Duration(seconds: 4), () async {
+      bool isConnected = await SplashRepository().checkConnectivity(); //* Check if connected
+      if (isConnected == true) {
+        connectionStatus.value = ConnectionStatus.connected; //* Update status to connected
+        Get.offAll(
+            const RegisterSwitchView(), //* Navigate to the Language selection view if connected
+          transition: Transition.fadeIn,
+          duration: const Duration(seconds: 1), //* Smooth transition with 1-second duration
+          curve: Curves.easeIn, //* Use easeIn curve for the animation
+        );
+      } else {
+        return connectionStatus.value = ConnectionStatus.disconnected; //* Set status to disconnected if no internet
+      }
+    });
+  }
+}
