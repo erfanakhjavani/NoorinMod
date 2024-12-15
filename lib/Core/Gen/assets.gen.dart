@@ -71,6 +71,9 @@ class $AssetsJsonGen {
   /// File path: assets/json/error.json
   String get error => 'assets/json/error.json';
 
+  /// File path: assets/json/logo.json
+  String get logo => 'assets/json/logo.json';
+
   /// File path: assets/json/wave2.json
   String get wave2 => 'assets/json/wave2.json';
 
@@ -78,8 +81,17 @@ class $AssetsJsonGen {
   String get waveloop => 'assets/json/waveloop.json';
 
   /// List of all assets
-  List<String> get values =>
-      [animaTik, arrowUp, disconnect, empty, env1, error, wave2, waveloop];
+  List<String> get values => [
+        animaTik,
+        arrowUp,
+        disconnect,
+        empty,
+        env1,
+        error,
+        logo,
+        wave2,
+        waveloop
+      ];
 }
 
 class $AssetsPngGen {

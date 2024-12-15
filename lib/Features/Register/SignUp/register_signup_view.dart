@@ -27,11 +27,11 @@ class RegisterSignupView extends GetView<RegisterSignupViewmodel> {
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade500),
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade600),
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(10),
           ),
           hintText: hintText,
           suffixIcon: suffixIcon,
@@ -43,7 +43,6 @@ class RegisterSignupView extends GetView<RegisterSignupViewmodel> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
